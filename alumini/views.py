@@ -71,7 +71,7 @@ def logout(request):
 
 def posts(request):
     posts = Posts.objects.all()
-    return render(request,"base.html",{'posts':posts})   
+    return render(request,"posts.html",{'posts':posts})   
 
 def profile(request, pk):
     if request.method == "POST":
