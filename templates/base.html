@@ -17,7 +17,7 @@
         <div class="title-container">{{post.title}}</div>
         <div class="image-container"><a href="{{post.image.url}}"> <img src="{{post.image.url}}" alt=""></a></div>
         <div class="description-container">{{post.description}}</div>
-        <div class="link-container">url:<a href="{{post.url}}">{{post.url}}</a></div>
+        <div class="link-container">url:<a href="{{% post.url %}}">{{post.url}}</a></div>
         <div class="date-container">Posted by {{post.alumini.name}} in {{post.dateposted}}</div>
       </div>
       {% endfor %}
