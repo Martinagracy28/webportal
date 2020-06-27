@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>My post view</title>
+</head>
+<body>
+	 {% include 'navbar.html' %}
+<div class="full-view">
+  <div class="post-container">
+      <div class="single">
+        <div class="title-container">{{posts.title}}</div>
+        <div class="image-container"><a href="{{posts.image.url}}"> <img src="{{posts.image.url}}" alt=""></a></div>
+        <div class="description-container">{{posts.description}}</div>
+        <div class="link-container">url:<a href="{{posts.url}}">{{posts.url}}</a></div>
+        <div class="date-container">posted by {{posts.alumini.name}} in {{posts.dateposted}}</div>
+      </div>
+  </div>
+</div>
+
+</body>
+</html>

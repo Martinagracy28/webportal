@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+<meta content="utf-8" http-equiv="encoding">
+<html>
+<head>
+  	<title>New profile</title>
+  	<link rel="stylesheet" type="text/css" href="/static/css/style.css">
+  	<script src="https://kit.fontawesome.com/c939d0e917.js"></script>
+</head>
+<body>
+	{% include 'navbar.html' %}
+	<div class="full-view">
+      <div class="side">
+        <div class="pictures"><i class="far fa-user-circle"></i></div>
+        <marquee width=95%>Welcome {{user.first_name}}</marquee>
+        <div class="create-post"><a href="{% url 'newpost' user.id %}">Create NewPost</a></div>
+        <div class="my-post"><a href="{% url 'viewing' user.id %}">My Post</a></div>
+      </div>
+    
+	<div class="part">
+		<h2>New profile</h2>
+		 <form method="POST" action="." enctype="multipart/form-data" class="styles">
+{% csrf_token %}
+{{form.as_p}}
+<input type="submit" name="allposts" >
+
+</form>
+	</div>
+</div>
+</body>
+</html>

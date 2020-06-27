@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+<meta content="utf-8" http-equiv="encoding">
+<html>
+<head>
+    <title>My Post</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+    <script src="https://kit.fontawesome.com/c939d0e917.js"></script>
+</head>
+<body>
+    {% include 'navbar.html' %}
+    <div class="full-view">
+        <div class="side">
+            <div class="pictures"><i class="far fa-user-circle"></i></div>
+            <marquee width=95%>Welcome {{user.first_name}}</marquee>
+            <div class="create-post"><a href="{% url 'newpost' user.id %}">Create NewPost</a></div>
+            <div class="my-post"><a href="{% url 'viewing' user.id %}">My Post</a></div>
+        </div>
+        <div class="part">
+            {% if alumini %}
+                <h2>My Post</h2>
+                <div class="table">
+                    <table>
+                        <tr>
+                        <th>Date</th>
+                        <th>Post Title</th>
+                        <th>Description</th>
+                        <th>Image</th>
+                        <th>Url</th>
+                        <th>Actions</th>
+                        </tr>
+                        {% for p in aluminipost %}
+                            <tr>
+                            	<td>{{p.dateposted}}</td>
+                            	<td>{{p.title}}</td>
+                            	<td>{{p.description}}</td>
+                            	<td><img src="{{p.image.url}}" alt="image" width="150px" height="100px"></td>
+                            	<td><a href="{{p.url}}">{{p.url}}</a></td>
+                            	<td><a href="{% url 'update' p.id %}">Update</a></td>
+                                <td><a href="{% url 'delete' p.id %}">Delete</a></td>
+                                <td><a href="{% url 'view' p.id %}">View</a></td>
+                            </tr><br>
+                        {% endfor %}
+                    </table>
+            {% else %}
+                <h3>still you don't have any profile so ...</h3>
+                <div class="edit-profile"><a href="{% url 'newprofile' user.id %}">Create New Profile</a></div>
+            {% endif %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

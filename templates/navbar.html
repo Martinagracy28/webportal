@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+<meta content="utf-8" http-equiv="encoding">
+<html>
+<head>
+  	<title>Alumni portal</title>
+  	<link rel="stylesheet" type="text/css" href="/static/css/style.css">
+  	<script src="https://kit.fontawesome.com/c939d0e917.js"></script>
+</head>
+<body>
+  	<div class="alumini-container">
+  		<div class="alumini-portal">
+  			Alumni portal
+  		</div>
+  		<div class="space"></div>
+  		<div class="home"><a href="{% url 'base' %}">home</a></div>
+      {% if user.is_authenticated %}
+     <div class="login"><a href="{% url 'profile' user.id %}">Dashboard</a></div>
+      <div class="register"><a href="{% url 'logout'  %}">Logout</a></div>
+      {% else %}
+  		<div class="login"><a href="{% url 'login'  %}">login</a></div>
+  		<div class="register"><a href="{% url 'register' %}">register</a></div>
+      {%endif%}
+     
+  	</div>
+    
+   
+    
+    
+    
+</body>
+</html>

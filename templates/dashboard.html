@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+<meta content="utf-8" http-equiv="encoding">
+<html>
+<head>
+  	<title>My Profile</title>
+  	<link rel="stylesheet" type="text/css" href="/static/css/style.css">
+  	<script src="https://kit.fontawesome.com/c939d0e917.js"></script>
+</head>
+<body>
+  {% include 'navbar.html' %}
+  <div class="full-view">
+      <div class="side">
+        <div class="pictures"><i class="far fa-user-circle"></i></div>
+        <marquee width=95%>Welcome {{user.first_name}}</marquee>
+        <div class="create-post"><a href="{% url 'newpost' user.id %}">Create NewPost</a></div>
+        <div class="my-post"><a href="{% url 'viewing' user.id %}">My Post</a></div>
+      </div>
+    
+<div class="part">
+<div class="profile"></div>
+{% if alumini %}
+    <h2>Profile</h2>
+    <div class="items">Name:<h3>hello,{{alumini.name}}</h3></div>
+    <div class="items">College name:<h3>{{alumini.collegename}}</h3></div>
+    <div class="items">Department:<h3>{{alumini.department}}</h3></div>
+    <div class="items">Year Of Passing:<h3>{{alumini.yearofpassing}}</h3></div>
+    <div class="items">Company Name:<h3>{{alumini.companyname}}</h3></div>
+    <div class="items">Current Position:<h3>{{alumini.currentposition}}</h3></div>
+    <div class="items">Area Of Domain:<h3>{{alumini.areaofdomain}}</h3></div>
+    <div class="items">Email Id:<h3>{{alumini.email}}</h3></div> 
+    <div class="items">Contact Number:<h3>{{alumini.contactnumber}}</h3></div>  
+        
+    <div class="edit-profile"><a href="{% url 'edit' alumini.id %}">Edit Profile</a></div>
+    {% else %}
+   <div class="edit-profile"><a href="{% url 'newprofile' user.id %}">Create New Profile</a></div>
+   {% endif %}
+<form method="POST" action="." enctype="multipart/form-data" class="styles">
+{% csrf_token %}
+{{form.as_p}}
+{% comment %} <input type="submit" name="allposts" > {% endcomment %}
+
+</form>
+</div>
+</div>
+</body>
+</html>
+      
